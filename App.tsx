@@ -16,13 +16,15 @@ import {
   View,
 } from 'react-native';
 
-import HomePage from './components/HomePage';
+import HomePageImage from './components/HomePageImage';
+import HomePageMessage from './components/HomePageMessage';
 
 function App(): React.JSX.Element {
   return (
-    <HomePage>
-
-    </HomePage>
+    <View>
+      <HomePageImage ></HomePageImage>
+      <HomePageMessage></HomePageMessage>
+    </View>
   );
 }
 
