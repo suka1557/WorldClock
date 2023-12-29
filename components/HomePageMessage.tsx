@@ -1,10 +1,10 @@
 import { Text, View } from "react-native";
-import hometextstyles from "../styling/hometextstyle";
+import styles from "../styling/styles";
 
 function HomePageMessage() {
     return (
-        <View style={hometextstyles.container}>
-            <Text style={hometextstyles.text}>
+        <View>
+            <Text style={styles.hometext}> 
                 This is a component to display text on bottom of the screen
             </Text>
         </View>

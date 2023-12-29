@@ -1,11 +1,11 @@
 import { Image, View } from "react-native";
-import imagestyles from "../styling/imagestyle";
+import styles from "../styling/styles";
 
 const HomePageImage = () => {
     return (
-        <View>
+        <View style={styles.homeimagecontainer}>
         <Image source={require('../assets/Clock.png')}
-            // style={imagestyles.image}
+            // style={styles.homeimage}
         >
 
         </Image>

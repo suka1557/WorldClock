@@ -17,6 +17,28 @@ const styles = StyleSheet.create({
     highlight: {
       fontWeight: '700',
     },
+    hometextcontainer: {
+      flex: 1,
+      height: '10%',
+      alignItems: 'center',
+      justifyContent: 'flex-end',
+      paddingBottom: 10, // Adjust paddingBottom as needed
+    },
+    hometext: {
+      fontSize: 30,
+      fontWeight: 'bold',
+    },
+    homeimagecontainer: {
+      flex: 1,
+      height: '50%',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    homeimage: {
+      width: '100%',
+      height: '100%',
+      resizeMode: 'cover',
+    },
   });
 
 export default styles ;
