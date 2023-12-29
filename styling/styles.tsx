@@ -37,6 +37,11 @@ const styles = StyleSheet.create({
       height: '100%',
       resizeMode: 'contain',
     },
+    locationpickercontainer: {
+      flex: 0.2,
+      alignItems: 'center',
+      justifyContent: 'center',
+    }
   });
 
 export default styles ;
