@@ -18,11 +18,13 @@ import {
 
 import HomePageImage from './components/HomePageImage';
 import HomePageMessage from './components/HomePageMessage';
+import styles from './styling/styles';
 
 function App(): React.JSX.Element {
   return (
-    <View>
+    <View style={styles.sectionContainer}>
       <HomePageImage ></HomePageImage>
+      <View style={{flex: 0.2}} />
       <HomePageMessage></HomePageMessage>
     </View>
   );

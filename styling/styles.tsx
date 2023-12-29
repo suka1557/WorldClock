@@ -2,8 +2,8 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     sectionContainer: {
-      marginTop: 32,
-      paddingHorizontal: 24,
+      flex: 1,
+      flexDirection: "column",
     },
     sectionTitle: {
       fontSize: 24,
@@ -18,26 +18,24 @@ const styles = StyleSheet.create({
       fontWeight: '700',
     },
     hometextcontainer: {
-      flex: 1,
-      height: '10%',
+      flex: 0.1,
       alignItems: 'center',
-      justifyContent: 'flex-end',
-      paddingBottom: 10, // Adjust paddingBottom as needed
+      justifyContent:'space-around',
+      paddingBottom: 2, // Adjust paddingBottom as needed
     },
     hometext: {
-      fontSize: 30,
+      fontSize: 20,
       fontWeight: 'bold',
     },
     homeimagecontainer: {
-      flex: 1,
-      height: '50%',
+      flex: 0.7,
       alignItems: 'center',
       justifyContent: 'center',
     },
     homeimage: {
       width: '100%',
       height: '100%',
-      resizeMode: 'cover',
+      resizeMode: 'contain',
     },
   });
 

@@ -3,7 +3,7 @@ import styles from "../styling/styles";
 
 function HomePageMessage() {
     return (
-        <View>
+        <View style={styles.hometextcontainer}>
             <Text style={styles.hometext}> 
                 This is a component to display text on bottom of the screen
             </Text>
