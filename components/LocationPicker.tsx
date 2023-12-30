@@ -1,25 +1,45 @@
 import React, { useState} from 'react';
 import { View, Text, TouchableOpacity, Modal, StyleSheet } from 'react-native';
 
+let WORLDCLOCK_API = 'http://worldtimeapi.org/api/timezone/' ;
+
+const GetTimeatLocation = async (timezone: string) => {
+  
+  const timezone_uri = WORLDCLOCK_API + timezone ;
+
+    try {
+      // Replace 'YOUR_API_ENDPOINT' with the actual API endpoint URL
+      const response = await fetch(timezone_uri);
+      const data = await response.json();
+      console.log('API Response:', data);
+    } catch (error) {
+      console.error('Error fetching API:', error);
+    }
+
+  }
+
 const LocationPicker = () => {
     const [isModalVisible, setModalVisible] = useState(false);
     const [selectedValue, setSelectedValue] = useState<string | null>(null);;
 
     const options = [
-        { label: 'Delhi, India', value: 'delhi', color: 'red' },
-        { label: 'New York, USA', value: 'newyork', color: 'blue' },
-        { label: 'London, UK', value: 'london', color: 'green' },
-        { label: 'Paris, France', value: 'paris', color: 'purple' },
-        { label: 'Tokyo, Japan', value: 'tokyo', color: 'orange' },
-        { label: 'Beijing, China', value: 'beijing', color: 'brown' },
+        { label: 'Delhi, India', value: 'Asia/Kolkata', color: 'red' },
+        { label: 'New York, USA', value: 'America/New_York', color: 'blue' },
+        { label: 'London, UK', value: 'Europe/London', color: 'green' },
+        { label: 'Paris, France', value: 'Europe/Paris', color: 'purple' },
+        { label: 'Tokyo, Japan', value: 'Asia/Tokyo', color: 'orange' },
+        { label: 'Shanghai, China', value: 'Asia/Shanghai', color: 'brown' },
     ];
 
     const toggleModal = () => {
         setModalVisible(!isModalVisible);
     };
 
-    const handleSelect = (value: string) => {
-        console.log(`Selected location: ${value}`);
+    const handleSelect = (cityname: string, timezone: string) => {
+        console.log(`Selected location: ${cityname}`);
+        GetTimeatLocation(timezone);
+
+        // Reset the button state back to null
         setSelectedValue(null);
         toggleModal();
     };
@@ -43,7 +63,7 @@ const LocationPicker = () => {
               <TouchableOpacity
                 key={option.value}
                 style={[styles.option, { backgroundColor: option.color }]}
-                onPress={() => handleSelect(option.label)}
+                onPress={() => handleSelect(option.label, option.value)}
               >
                 <Text style={styles.optionText}>{option.label}</Text>
               </TouchableOpacity>
