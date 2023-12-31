@@ -1,22 +1,7 @@
 import React, { useState} from 'react';
 import { View, Text, TouchableOpacity, Modal, StyleSheet } from 'react-native';
+import { GetTimeatLocation } from './GetTimefromWorldClock';
 
-let WORLDCLOCK_API = 'http://worldtimeapi.org/api/timezone/' ;
-
-const GetTimeatLocation = async (timezone: string) => {
-  
-  const timezone_uri = WORLDCLOCK_API + timezone ;
-
-    try {
-      // Replace 'YOUR_API_ENDPOINT' with the actual API endpoint URL
-      const response = await fetch(timezone_uri);
-      const data = await response.json();
-      console.log('API Response:', data);
-    } catch (error) {
-      console.error('Error fetching API:', error);
-    }
-
-  }
 
 const LocationPicker = () => {
     const [isModalVisible, setModalVisible] = useState(false);
