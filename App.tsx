@@ -16,15 +16,16 @@ import {
   View,
 } from 'react-native';
 
-import HomePageImage from './components/HomePageImage';
+// import HomePageImage from './components/HomePageImage';
 import HomePageMessage from './components/HomePageMessage';
 import LocationPicker from './components/LocationPicker';
+import AnalogClock from './components/Clock';
 import styles from './styling/styles';
-
 function App(): React.JSX.Element {
   return (
     <View style={styles.sectionContainer}>
-      <HomePageImage ></HomePageImage>
+      {/* <HomePageImage ></HomePageImage> */}
+      <AnalogClock />
       <LocationPicker />
       <HomePageMessage></HomePageMessage>
     </View>
