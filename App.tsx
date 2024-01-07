@@ -20,12 +20,13 @@ import {
 import HomePageMessage from './components/HomePageMessage';
 import LocationPicker from './components/LocationPicker';
 import AnalogClock from './components/Clock';
+import AnalogClock2 from './components/Clock2';
 import styles from './styling/styles';
 function App(): React.JSX.Element {
   return (
     <View style={styles.sectionContainer}>
       {/* <HomePageImage ></HomePageImage> */}
-      <AnalogClock />
+      <AnalogClock2/>
       <LocationPicker />
       <HomePageMessage></HomePageMessage>
     </View>
