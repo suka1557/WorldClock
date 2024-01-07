@@ -12,9 +12,9 @@ const AnalogClock2 = () => {
     if (!context) {
       // Handle the case where the context is undefined
       console.log('Error in TimeGap Context Provider') ;
-    }
+    };
 
-    const { TimeGapState, setTimeGapState } = context;
+  const { TimeGapState, setTimeGapState } = context;
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -23,7 +23,7 @@ const AnalogClock2 = () => {
 
     // Cleanup the interval on component unmount
     return () => clearInterval(intervalId);
-  }, []);
+  }, [TimeGapState]);
 
   // Calculate angles for hour and minute hands
   const hourAngle = 360 * ((currentTime.hour() % 12) + currentTime.minute() / 60) / 12;
@@ -70,7 +70,6 @@ const AnalogClock2 = () => {
       </Svg>
       <Text style={styles.timeText}>{currentTime.format('DD-MMM-YYYY')}</Text>
       <Text style={styles.timeText}>{currentTime.format('HH:mm A')}</Text>
-      <Text style={styles.timeText}>Time Gap in Seconds Now: {TimeGapState}</Text>
     </View>
   );
 };
@@ -83,7 +82,10 @@ const styles = StyleSheet.create({
   },
   timeText: {
     marginTop: 10,
-    fontSize: 16,
+    fontSize: 30,
+    letterSpacing: 2,
+    fontStyle: 'normal',
+    fontWeight: 'bold',
   },
 });
 
