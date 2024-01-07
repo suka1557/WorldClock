@@ -19,15 +19,16 @@ import {
 // import HomePageImage from './components/HomePageImage';
 import HomePageMessage from './components/HomePageMessage';
 import LocationPicker from './components/LocationPicker';
-import AnalogClock from './components/Clock';
+import { TimeGapContextProvider } from './context/TimeGapContext';
 import AnalogClock2 from './components/Clock2';
 import styles from './styling/styles';
 function App(): React.JSX.Element {
   return (
     <View style={styles.sectionContainer}>
-      {/* <HomePageImage ></HomePageImage> */}
+      <TimeGapContextProvider>
       <AnalogClock2/>
       <LocationPicker />
+      </TimeGapContextProvider>
       <HomePageMessage></HomePageMessage>
     </View>
   );

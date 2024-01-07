@@ -1,11 +1,21 @@
-import React, { useState} from 'react';
+import React, { useState, useContext} from 'react';
 import { View, Text, TouchableOpacity, Modal, StyleSheet } from 'react-native';
-import { GetTimeatLocation } from './GetTimefromWorldClock';
+import GetTimeatLocation from './GetTimefromWorldClock';
+import { useTimeGapContext } from '../context/TimeGapContext';
 
 
 const LocationPicker = () => {
     const [isModalVisible, setModalVisible] = useState(false);
     const [selectedValue, setSelectedValue] = useState<string | null>(null);;
+
+    const context = useTimeGapContext();
+
+    if (!context) {
+      // Handle the case where the context is undefined
+      console.log('Error in TimeGap Context Provider') ;
+    }
+
+    const { TimeGapState, setTimeGapState } = context;
 
     const options = [
         { label: 'Delhi, India', value: 'Asia/Kolkata', color: 'red' },
@@ -20,10 +30,16 @@ const LocationPicker = () => {
         setModalVisible(!isModalVisible);
     };
 
-    const handleSelect = (cityname: string, timezone: string) => {
-        console.log(`Selected location: ${cityname}`);
-        GetTimeatLocation(timezone);
+    const handleSelect = async (cityname: string, timezone: string) => {
+        // console.log(`Selected location: ${cityname}`);
 
+        const time_gap:number = await GetTimeatLocation(timezone);
+        // console.log('value in time_gap variable: ', time_gap);
+        setTimeGapState(time_gap);
+
+        // console.log(`value of timegap now:`, TimeGapState);
+
+        
         // Reset the button state back to null
         setSelectedValue(null);
         toggleModal();

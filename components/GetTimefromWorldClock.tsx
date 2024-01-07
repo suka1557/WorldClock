@@ -2,11 +2,12 @@ import moment from "moment";
 
 let WORLDCLOCK_API = 'http://worldtimeapi.org/api/timezone/' ;
 
-export const GetTimeatLocation = async (timezone: string) => {
+const GetTimeatLocation = async (timezone: string): Promise<number> => {
   
   const timezone_uri = WORLDCLOCK_API + timezone ;
   let location_date_time = moment() ;
   let calculated_time_gap_in_seconds = 0 ;
+  // console.log('Type of time_gap variable inside function : ', typeof calculated_time_gap_in_seconds);
   // console.log('Time in local system: ', location_date_time.format('HH:mm:ss')) ;
 
     try {
@@ -25,6 +26,8 @@ export const GetTimeatLocation = async (timezone: string) => {
       console.error('Error fetching API:', error);
     };
 
-    return calculated_time_gap_in_seconds;
+    return Promise.resolve(calculated_time_gap_in_seconds);
 
   };
+
+  export default GetTimeatLocation ;

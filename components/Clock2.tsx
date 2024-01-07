@@ -2,13 +2,23 @@ import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { Svg, Circle, Line } from 'react-native-svg';
 import moment from 'moment';
+import { useTimeGapContext } from '../context/TimeGapContext';
 
 const AnalogClock2 = () => {
   const [currentTime, setCurrentTime] = useState(moment());
 
+  const context = useTimeGapContext();
+
+    if (!context) {
+      // Handle the case where the context is undefined
+      console.log('Error in TimeGap Context Provider') ;
+    }
+
+    const { TimeGapState, setTimeGapState } = context;
+
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setCurrentTime(moment());
+      setCurrentTime(moment().add(TimeGapState, 'seconds'));
     }, 1000);
 
     // Cleanup the interval on component unmount
@@ -60,6 +70,7 @@ const AnalogClock2 = () => {
       </Svg>
       <Text style={styles.timeText}>{currentTime.format('DD-MMM-YYYY')}</Text>
       <Text style={styles.timeText}>{currentTime.format('HH:mm A')}</Text>
+      <Text style={styles.timeText}>Time Gap in Seconds Now: {TimeGapState}</Text>
     </View>
   );
 };
